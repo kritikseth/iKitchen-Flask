@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  Homepage
+{% endblock %}
+
+{% block main %}
+
+<h1> Welcome to iKitchen! </h1>
+
+<p> Please upload an image of any fruit/vegetable for us to allow and detect what it is! </p>
+
+<form method='POST' enctype=multipart/form-data>
+
+  <div class='form-group'>
+    <input type='file' id='img' name='img' accept='image/*' required autofocus>
+  </div>
+
+  <button type='submit' class='btn btn-primary'>Predict</button>
+
+  <br>
+
+  {% if image_loc %}
+    <br>
+    <img src='static/{{image_loc}}' alt='' width='256' height='256'>
+
+    <h2>{{res}}</h2>
+  {% endif %}
+  </form>
+
+{% endblock %}
